@@ -1,12 +1,5 @@
-# syntax=docker/dockerfile:1
+FROM tomcat:latest
 
-FROM python:3.8-slim-buster
+MAINTAINER Ganesh Kirdak
 
-WORKDIR /app
-
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-
-COPY . .
-
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+COPY ./*.war /usr/local/tomcat/webapps
